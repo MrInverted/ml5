@@ -12,7 +12,7 @@ export function Predictor() {
   const { guessResult } = useML5();
   const isTrained = useStore((s) => s.isTrained);
   const [image, setImage] = React.useState<string | null>(null);
-  const [result, setResult] = React.useState<IML5ClassificationResult>({});
+  const [result, setResult] = React.useState<IML5ClassificationResult>();
 
   if (!isTrained) return null;
 
@@ -45,8 +45,8 @@ export function Predictor() {
       <div className="flex flex-col gap-2">
         <Button variant="blue" onClick={tryGuess}>Guess</Button>
         <div>
-          <p>Result: <b>{result.label}</b></p>
-          <p>Confidence: <b>{(result.confidence * 100).toFixed(2)}%</b></p>
+          <p>Result: <b>{result?.label}</b></p>
+          <p>Confidence: <b>{((result?.confidence ?? 0) * 100).toFixed(2)}%</b></p>
         </div>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import React from "react";
 import toast from "react-hot-toast";
 
+// @ts-expect-error no types exists
 import * as ml5 from "ml5";
+
 import { useStore } from "@/store/zustand";
 
 
